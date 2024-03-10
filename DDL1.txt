@@ -1,0 +1,114 @@
+SQL> create table course
+  2  cid number(5) primary key,
+  3  cname varchar(20) nut null,
+  4  fees number(5), check (fees>20000),
+  5  Tname varchar (20));
+cid number(5) primary key,
+*
+ERROR at line 2:
+ORA-00922: missing or invalid option 
+
+
+SQL> create table course
+  2  (cid number(5) primary key,
+  3  cname varchar(20) nut null,
+  4  fees number(5), check (fees>20000),
+  5  Tname varchar (20));
+cname varchar(20) nut null,
+                  *
+ERROR at line 3:
+ORA-00907: missing right parenthesis 
+
+
+SQL>  create table course
+  2  (cid number(5) primary key,
+  3  cname varchar(20) not null,
+  4  fees number(5), check (fees>20000),
+  5  Tname varchar (20));
+ create table course
+              *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> desc curse;
+ERROR:
+ORA-04043: object curse does not exist 
+
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ FEES                                               NUMBER(5)
+ TNAME                                              VARCHAR2(20)
+
+SQL> ALTER COURSE
+  2  ADD DURATION NUMBER(5);
+ALTER COURSE
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command 
+
+
+SQL> ALTER TABLE COURSE
+  2  ADD DURATION NUMBER(5);
+
+Table altered.
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ FEES                                               NUMBER(5)
+ TNAME                                              VARCHAR2(20)
+ DURATION                                           NUMBER(5)
+
+SQL> ALTER TABLE COURSE
+  2  RENAME COLUMN FEES TO PRICE;
+
+Table altered.
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ PRICE                                              NUMBER(5)
+ TNAME                                              VARCHAR2(20)
+ DURATION                                           NUMBER(5)
+
+SQL> ALTER TABLE COURSE
+  2  DROP COLUMN PRICE;
+
+Table altered.
+
+SQL> DESC PRICE;
+ERROR:
+ORA-04043: object PRICE does not exist 
+
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ TNAME                                              VARCHAR2(20)
+ DURATION                                           NUMBER(5)
+
+SQL> ALTER TABLE COURSE
+  2  MODIFY DURATION VARCHAR(20);
+
+Table altered.
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ TNAME                                              VARCHAR2(20)
+ DURATION                                           VARCHAR2(20)
+
+SQL> SPOOL OFF

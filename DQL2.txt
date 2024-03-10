@@ -1,0 +1,237 @@
+SQL> select ename , sal+500
+  2  from emp;
+
+ENAME         SAL+500                                                           
+---------- ----------                                                           
+SMITH            1300                                                           
+ALLEN            2100                                                           
+WARD             1750                                                           
+JONES            3475                                                           
+MARTIN           1750                                                           
+BLAKE            3350                                                           
+CLARK            2950                                                           
+SCOTT            3500                                                           
+KING             5500                                                           
+TURNER           2000                                                           
+ADAMS            1600                                                           
+
+ENAME         SAL+500                                                           
+---------- ----------                                                           
+JAMES            1450                                                           
+FORD             3500                                                           
+MILLER           1800                                                           
+
+14 rows selected.
+
+SQL> select sal-700
+  2  from emp;
+
+   SAL-700                                                                      
+----------                                                                      
+       100                                                                      
+       900                                                                      
+       550                                                                      
+      2275                                                                      
+       550                                                                      
+      2150                                                                      
+      1750                                                                      
+      2300                                                                      
+      4300                                                                      
+       800                                                                      
+       400                                                                      
+
+   SAL-700                                                                      
+----------                                                                      
+       250                                                                      
+      2300                                                                      
+       600                                                                      
+
+14 rows selected.
+
+SQL> select sal*12
+  2  from emp
+  3  where job='CLERK';
+
+    SAL*12                                                                      
+----------                                                                      
+      9600                                                                      
+     13200                                                                      
+     11400                                                                      
+     15600                                                                      
+
+SQL> select sal/2, comm
+  2  *12 from emp;
+
+     SAL/2    COMM*12                                                           
+---------- ----------                                                           
+       400                                                                      
+       800       3600                                                           
+       625       6000                                                           
+    1487.5                                                                      
+       625      16800                                                           
+      1425                                                                      
+      1225                                                                      
+      1500                                                                      
+      2500                                                                      
+       750          0                                                           
+       550                                                                      
+
+     SAL/2    COMM*12                                                           
+---------- ----------                                                           
+       475                                                                      
+      1500                                                                      
+       650                                                                      
+
+14 rows selected.
+
+SQL> select ename,empno,sal\2
+  2  from emp;
+select ename,empno,sal\2
+                      *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select ename , empno , sal*6
+  2  from emp;
+
+ENAME           EMPNO      SAL*6                                                
+---------- ---------- ----------                                                
+SMITH            7369       4800                                                
+ALLEN            7499       9600                                                
+WARD             7521       7500                                                
+JONES            7566      17850                                                
+MARTIN           7654       7500                                                
+BLAKE            7698      17100                                                
+CLARK            7782      14700                                                
+SCOTT            7788      18000                                                
+KING             7839      30000                                                
+TURNER           7844       9000                                                
+ADAMS            7876       6600                                                
+
+ENAME           EMPNO      SAL*6                                                
+---------- ---------- ----------                                                
+JAMES            7900       5700                                                
+FORD             7902      18000                                                
+MILLER           7934       7800                                                
+
+14 rows selected.
+
+SQL> select sal(43*6)
+  2  from emp;
+select sal(43*6)
+       *
+ERROR at line 1:
+ORA-00904: "SAL": invalid identifier 
+
+
+SQL> select sal*43*6
+  2  from emp;
+
+  SAL*43*6                                                                      
+----------                                                                      
+    206400                                                                      
+    412800                                                                      
+    322500                                                                      
+    767550                                                                      
+    322500                                                                      
+    735300                                                                      
+    632100                                                                      
+    774000                                                                      
+   1290000                                                                      
+    387000                                                                      
+    283800                                                                      
+
+  SAL*43*6                                                                      
+----------                                                                      
+    245100                                                                      
+    774000                                                                      
+    335400                                                                      
+
+14 rows selected.
+
+SQL> select sal*0.83
+  2  from emp;
+
+  SAL*0.83                                                                      
+----------                                                                      
+       664                                                                      
+      1328                                                                      
+    1037.5                                                                      
+   2469.25                                                                      
+    1037.5                                                                      
+    2365.5                                                                      
+    2033.5                                                                      
+      2490                                                                      
+      4150                                                                      
+      1245                                                                      
+       913                                                                      
+
+  SAL*0.83                                                                      
+----------                                                                      
+     788.5                                                                      
+      2490                                                                      
+      1079                                                                      
+
+14 rows selected.
+
+SQL> 
+SQL> select
+  2  *
+  3  from emp
+  4  where sal=3000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                 
+        20                                                                      
+                                                                                
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+SQL> select ename , job, hiredate
+  2  from emp
+  3  where sal>=2000;
+
+ENAME      JOB       HIREDATE                                                   
+---------- --------- ---------                                                  
+JONES      MANAGER   02-APR-81                                                  
+BLAKE      MANAGER   01-MAY-81                                                  
+CLARK      MANAGER   09-JUN-81                                                  
+SCOTT      ANALYST   19-APR-87                                                  
+KING       PRESIDENT 17-NOV-81                                                  
+FORD       ANALYST   03-DEC-81                                                  
+
+6 rows selected.
+
+SQL> select ename,sal/2 , deptno
+  2  from dept;
+select ename,sal/2 , deptno
+             *
+ERROR at line 1:
+ORA-00904: "SAL": invalid identifier 
+
+
+SQL> select ename , sal , empno
+  2  from emp
+  3  where comm
+  4  
+SQL> 
+SQL> 
+SQL> 
+SQL> select ename , sal,empno
+  2  from emp
+  3  where comm<2000
+  4  ;
+
+ENAME             SAL      EMPNO                                                
+---------- ---------- ----------                                                
+ALLEN            1600       7499                                                
+WARD             1250       7521                                                
+MARTIN           1250       7654                                                
+TURNER           1500       7844                                                
+
+SQL> spool off\

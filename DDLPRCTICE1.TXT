@@ -1,0 +1,228 @@
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ TNAME                                              VARCHAR2(20)
+ DURATION                                           VARCHAR2(20)
+
+SQL> DESC STUDENT;
+ERROR:
+ORA-04043: object STUDENT does not exist 
+
+
+SQL> CREATE TABLE STUDENT
+  2  (SID NUMBER(20) PRIMARY KEY
+  3  SNAME VARCHAR(15) UNIQUE,
+  4  AGE NUMBER (5)
+  5  CID NUMBER(5) REFERENCES COURSE(CID));
+SNAME VARCHAR(15) UNIQUE,
+*
+ERROR at line 3:
+ORA-00907: missing right parenthesis 
+
+
+SQL>  CREATE TABLE STUDENT
+  2   (SID NUMBER(20) PRIMARY KEY,
+  3   CREATE TABLE STUDENT
+  4   (SID NUMBER(20) PRIMARY KEY
+  5  
+SQL> 
+SQL> CREATE TABLE STUDENT
+  2  (SID NUMBER(20) PRIMARY KEY
+  3  SNAME VARCHAR(15) UNIQUE,
+  4  AGE NUMBER (5)
+  5  CID NUMBER(5) REFERENCES COURSE(CID));
+SNAME VARCHAR(15) UNIQUE,
+*
+ERROR at line 3:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE STUDENT
+  2  (SID NUMBER(20) PRIMARY KEY,
+  3  SNAME VARCHAR(15) UNIQUE,
+  4  AGE NUMBER (5),
+  5  CID NUMBER(5) REFERENCES COURSE(CID));
+
+Table created.
+
+SQL> SELECT * FROM STUDENT
+  2  ;
+
+no rows selected
+
+SQL> DESC STUDENT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                       NOT NULL NUMBER(20)
+ SNAME                                              VARCHAR2(15)
+ AGE                                                NUMBER(5)
+ CID                                                NUMBER(5)
+
+SQL> CREATE TABLE AUTHOR
+  2  (AID NUMBER(5) PRIMARY KEY
+  3  ANAME VARCHAR(20) NOT NULL
+  4  AGE NUMBER(3));
+ANAME VARCHAR(20) NOT NULL
+*
+ERROR at line 3:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE AUTHOR
+  2  (AID NUMBER(5) PRIMARY KEY,
+  3  ANAME VARCHAR(20) NOT NULL,
+  4   AGE NUMBER(3));
+
+Table created.
+
+SQL> CREATE TABLE BOOK
+  2  (BID NUMBER(5) PRIMARY KEY,
+  3  BNAME VARCHAR(20) UNIQUE'
+  4  PRICE NUMBER(5),
+  5  ESTDATE DATE,
+  6  AID NUMBER(5) REFERENCES AUTHOR(AID));
+BNAME VARCHAR(20) UNIQUE'
+                        *
+ERROR at line 3:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> CREATE TABLE BOOK
+  2  (BID NUMBER(5) PRIMARY KEY,
+  3  BNAME VARCHAR(20) UNIQUE,
+  4  PRICE NUMBER(5),
+  5  ESTDATE DATE,
+  6  AID NUMBER(5) REFERENCES AUTHOR(AID));
+
+Table created.
+
+SQL> DESC AUTHO;
+ERROR:
+ORA-04043: object AUTHO does not exist 
+
+
+SQL> DESC AUTHOR;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ AID                                       NOT NULL NUMBER(5)
+ ANAME                                     NOT NULL VARCHAR2(20)
+ AGE                                                NUMBER(3)
+
+SQL> DESC BOOK;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ BID                                       NOT NULL NUMBER(5)
+ BNAME                                              VARCHAR2(20)
+ PRICE                                              NUMBER(5)
+ ESTDATE                                            DATE
+ AID                                                NUMBER(5)
+
+SQL> CREATE TABLE CUSTOMER
+  2  (CID NUMBER(5) PRIMARY KEY'
+  3  CNAME VARCHAR(20) NOT NULL,
+  4  
+SQL> CREATE TABLE CUSTOMER
+  2  (CID NUMBER(5) PRIMARY KEY,
+  3  CNAME VARCHAR(20) NOT NULL,
+  4  ADD VARCHAR(10),
+  5  GENDER VERCHAR(6));
+ADD VARCHAR(10),
+*
+ERROR at line 4:
+ORA-00904: : invalid identifier 
+
+
+SQL> CREATE TABLE CUSTOMER
+  2  (CID NUMBER(5) PRIMARY KEY,
+  3  CNAME VARCHAR(20) NOT NULL,
+  4  ADDRESS VARCHAR(30),
+  5  GENDER VARCHAR(6));
+
+Table created.
+
+SQL> DESC CUSTOMER;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                     NOT NULL VARCHAR2(20)
+ ADDRESS                                            VARCHAR2(30)
+ GENDER                                             VARCHAR2(6)
+
+SQL> CREATE TABLE PRODUCT
+  2  (PID NUMBER(7) PRIMARY KEY,
+  3  PNAME VARCHAR(15) UNIQUE,
+  4  PRICE NUMBER(6) CHECK(PRICE>=1000),
+  5  MFDATE DATE,
+  6  CID NUMBER(5) REFERENCES CUSTOMER (CID));
+
+Table created.
+
+SQL> DESC PRODUCT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER(7)
+ PNAME                                              VARCHAR2(15)
+ PRICE                                              NUMBER(6)
+ MFDATE                                             DATE
+ CID                                                NUMBER(5)
+
+SQL> CREATE TABLE DOCTOR
+  2  (DID NUMBER(5) PRIMARY KEY,
+  3  DNAME VARCHAR(30),
+  4  AGE NUMBER(3),
+  5  SPECIALIZATION VARCHAR(30));
+
+Table created.
+
+SQL> CREATE TABLE PATAIENT
+  2  (PID NUMBER(5) PRIMARY KEY,
+  3  PNAME VARCHAR(20) ,
+  4  AGE NUMBER(5),
+  5  DISCOVER NUMBER(6),
+  6  DID NUMBER(5) REFERENCE DOCTOR(DID));
+DID NUMBER(5) REFERENCE DOCTOR(DID))
+              *
+ERROR at line 6:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE PATAIENT
+  2  (PID NUMBER(5) PRIMARY KEY,
+  3  PNAME VARCHAR(20),
+  4   AGE NUMBER(5),
+  5  DID NUMBER(5) REFERENCE DOCTOR(DID));
+DID NUMBER(5) REFERENCE DOCTOR(DID))
+              *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL>  CREATE TABLE PATAIENT
+  2   (PID NUMBER(5) PRIMARY KEY,
+  3  PNAME VARCHAR(20) UNIQUE,
+  4  AGE NUMBER(3) CHECK (AGE>=25),
+  5  DISCOVER NUMBER(6),
+  6  DID NUMBER(5) REFERENCES DOCTOR (DID));
+
+Table created.
+
+SQL> DESC DOCTOR;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DID                                       NOT NULL NUMBER(5)
+ DNAME                                              VARCHAR2(30)
+ AGE                                                NUMBER(3)
+ SPECIALIZATION                                     VARCHAR2(30)
+
+SQL> DESC PATAIENT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER(5)
+ PNAME                                              VARCHAR2(20)
+ AGE                                                NUMBER(3)
+ DISCOVER                                           NUMBER(6)
+ DID                                                NUMBER(5)
+
+SQL> SPOOL OFF

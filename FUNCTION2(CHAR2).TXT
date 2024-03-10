@@ -1,0 +1,275 @@
+SQL> SELECT ASCII('A')
+  2  FROM DUAL;
+
+ASCII('A')                                                                      
+----------                                                                      
+        65                                                                      
+
+SQL> SELECT ASCII('B')
+  2  FROM DUAL;
+
+ASCII('B')                                                                      
+----------                                                                      
+        66                                                                      
+
+SQL> SELECT ASCII('a')
+  2  FROM DUAL;
+
+ASCII('A')                                                                      
+----------                                                                      
+        97                                                                      
+
+SQL> SELECT ASCII('Z')
+  2  FROM DUAL;
+
+ASCII('Z')                                                                      
+----------                                                                      
+        90                                                                      
+
+SQL> SELECT ASCII('z')
+  2  FROM DUAL;
+
+ASCII('Z')                                                                      
+----------                                                                      
+       122                                                                      
+
+SQL> SELECT ASCII('L')
+  2  FROM DUAL;
+
+ASCII('L')                                                                      
+----------                                                                      
+        76                                                                      
+
+SQL> SELECT ASCII('l')
+  2  FROM DUAL;
+
+ASCII('L')                                                                      
+----------                                                                      
+       108                                                                      
+
+SQL> SELECT ASCII('J')
+  2  FROM DUAL;
+
+ASCII('J')                                                                      
+----------                                                                      
+        74                                                                      
+
+SQL> SELECT ASCII('j')
+  2  FROM DUAL;
+
+ASCII('J')                                                                      
+----------                                                                      
+       106                                                                      
+
+SQL> SELECT TRIM('LIPAM')
+  2  FROM DUAL;
+
+TRIM(                                                                           
+-----                                                                           
+LIPAM                                                                           
+
+SQL> SELECT TRIM('LIP AM')
+  2  FROM DUAL;
+
+TRIM('                                                                          
+------                                                                          
+LIP AM                                                                          
+
+SQL> SELECT TRIM('J' FROM 'JYOTI');
+SELECT TRIM('J' FROM 'JYOTI')
+                            *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL>  SELECT TRIM('J' FROM 'JYOTI')
+  2  FROM DUAL;
+
+TRIM                                                                            
+----                                                                            
+YOTI                                                                            
+
+SQL> SELECT INSTR('JYOTIRMAYEE','Y',1,2)
+  2  FROM DUAL;
+
+INSTR('JYOTIRMAYEE','Y',1,2)                                                    
+----------------------------                                                    
+                           9                                                    
+
+SQL> SELECT INSTR('JYOTIRMAYEE','E',5,2)
+  2  FROM DUAL;
+
+INSTR('JYOTIRMAYEE','E',5,2)                                                    
+----------------------------                                                    
+                          11                                                    
+
+SQL> SELECT INSTR('JYOTIRMAYEE','E')
+  2  FROM DUAL;
+
+INSTR('JYOTIRMAYEE','E')                                                        
+------------------------                                                        
+                      10                                                        
+
+SQL> SELECT INSTR('JYOTIRMAYEE','e')
+  2  FROM DUAL;
+
+INSTR('JYOTIRMAYEE','E')                                                        
+------------------------                                                        
+                       0                                                        
+
+SQL> SELECT TRANSLATE('DEVELOPER','VE','VA')
+  2  FROM DUAL;
+
+TRANSLATE                                                                       
+---------                                                                       
+DAVALOPAR                                                                       
+
+SQL> SELECT LPAD('SMITH',10,'WELCOME')
+  2  FROM DUAL;
+
+LPAD('SMIT                                                                      
+----------                                                                      
+WELCOSMITH                                                                      
+
+SQL> SELECT LPAD('SMITH',15,'HELLO')
+  2  FROM DUAL;
+
+LPAD('SMITH',15                                                                 
+---------------                                                                 
+HELLOHELLOSMITH                                                                 
+
+SQL> LPAD('SMITH',4,'HI')
+SP2-0734: unknown command beginning "LPAD('SMIT..." - rest of line ignored.
+SQL> SELECT LPAD('SMITH',4,'HI')
+  2  FROM DUAL;
+
+LPAD                                                                            
+----                                                                            
+SMIT                                                                            
+
+SQL> R
+  1  SELECT LPAD('SMITH',4,'HI')
+  2* FROM DUAL
+
+LPAD                                                                            
+----                                                                            
+SMIT                                                                            
+
+SQL> SELECT RPAD('JYOTI',15,'WELCOME HOME')
+  2  FROM DUAL;
+
+RPAD('JYOTI',15                                                                 
+---------------                                                                 
+JYOTIWELCOME HO                                                                 
+
+SQL> SELECT RPAD('JYOTI',30,'WELCOME HOME');
+SELECT RPAD('JYOTI',30,'WELCOME HOME')
+                                     *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT RPAD('JYOTI',30,'WELCOME HOME')
+  2  FROM DUAL;
+
+RPAD('JYOTI',30,'WELCOMEHOME')                                                  
+------------------------------                                                  
+JYOTIWELCOME HOMEWELCOME HOMEW                                                  
+
+SQL> SELECT ('SQL',10,'IS EASY')
+  2  FROM DUAL;
+SELECT ('SQL',10,'IS EASY')
+             *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT RPAD('SQL',10,'IS EASY')
+  2  FROM DUAL;
+
+RPAD('SQL'                                                                      
+----------                                                                      
+SQLIS EASY                                                                      
+
+SQL> SELECT CONCAT(ENAME,SAL)
+  2  FROM DUAL;
+SELECT CONCAT(ENAME,SAL)
+                    *
+ERROR at line 1:
+ORA-00904: "SAL": invalid identifier 
+
+
+SQL> SELECT CONCAT(ENAME,SAL)
+  2  FROM EMP;
+
+CONCAT(ENAME,SAL)                                                               
+--------------------------------------------------                              
+SMITH800                                                                        
+ALLEN1600                                                                       
+WARD1250                                                                        
+JONES2975                                                                       
+MARTIN1250                                                                      
+BLAKE2850                                                                       
+CLARK2450                                                                       
+SCOTT3000                                                                       
+KING5000                                                                        
+TURNER1500                                                                      
+ADAMS1100                                                                       
+
+CONCAT(ENAME,SAL)                                                               
+--------------------------------------------------                              
+JAMES950                                                                        
+FORD3000                                                                        
+MILLER1300                                                                      
+
+14 rows selected.
+
+SQL> SELECT CONCAT(ENAME,'',SAL)
+  2  FROM EMP;
+SELECT CONCAT(ENAME,'',SAL)
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT CONCAT(ENAME,SAL,JOB)
+  2  FROM EMP;
+SELECT CONCAT(ENAME,SAL,JOB)
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT CONCAT('WELCOM','JSPIDER')
+  2  FROM DUAL;
+
+CONCAT('WELCO                                                                   
+-------------                                                                   
+WELCOMJSPIDER                                                                   
+
+SQL> SELECT CONCAT(ENAME,JOB)
+  2  FROM EMP;
+
+CONCAT(ENAME,JOB)                                                               
+-------------------                                                             
+SMITHCLERK                                                                      
+ALLENSALESMAN                                                                   
+WARDSALESMAN                                                                    
+JONESMANAGER                                                                    
+MARTINSALESMAN                                                                  
+BLAKEMANAGER                                                                    
+CLARKMANAGER                                                                    
+SCOTTANALYST                                                                    
+KINGPRESIDENT                                                                   
+TURNERSALESMAN                                                                  
+ADAMSCLERK                                                                      
+
+CONCAT(ENAME,JOB)                                                               
+-------------------                                                             
+JAMESCLERK                                                                      
+FORDANALYST                                                                     
+MILLERCLERK                                                                     
+
+14 rows selected.
+
+SQL> SPOOL OFF

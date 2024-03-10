@@ -1,0 +1,108 @@
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+COURSE                         TABLE                                            
+STUDENT                        TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+CUSTOMER                       TABLE                                            
+PRODUCT                        TABLE                                            
+DOCTOR                         TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+PATAIENT                       TABLE                                            
+
+12 rows selected.
+
+SQL> DESC DOCTOR;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DID                                       NOT NULL NUMBER(5)
+ DNAME                                              VARCHAR2(30)
+ AGE                                                NUMBER(3)
+ SPECIALIZATION                                     VARCHAR2(30)
+
+SQL> INSERT INTO DOCTOR (101,'A',30,'DENTAL');
+INSERT INTO DOCTOR (101,'A',30,'DENTAL')
+                    *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> INSERT INTO DOCTOR VALUES(101,'A',27,'DENTAL');
+
+1 row created.
+
+SQL> INSERT INTO DOCTOR VALUES(102,'B',30,'EYE');
+
+1 row created.
+
+SQL> INSERT INTO DOCTOR VALUES(103,'C',32,'GUESTIC');
+
+1 row created.
+
+SQL> SELECT * FROM DOCTOR;
+
+       DID DNAME                                 AGE                            
+---------- ------------------------------ ----------                            
+SPECIALIZATION                                                                  
+------------------------------                                                  
+       101 A                                      27                            
+DENTAL                                                                          
+                                                                                
+       102 B                                      30                            
+EYE                                                                             
+                                                                                
+       103 C                                      32                            
+GUESTIC                                                                         
+                                                                                
+
+SQL> SET LINESIZE 200 PAGESIZE 200
+SQL> SELECT* FROM DOCTOR;
+
+       DID DNAME                                 AGE SPECIALIZATION                                                                                                                                     
+---------- ------------------------------ ---------- ------------------------------                                                                                                                     
+       101 A                                      27 DENTAL                                                                                                                                             
+       102 B                                      30 EYE                                                                                                                                                
+       103 C                                      32 GUESTIC                                                                                                                                            
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> UPDATE DOCTOR SET DNAME='RAM', SPECIALIZATION='PSYCHATRST
+  2  WHERE ID=101;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> UPDATE DOCTOR SET DNAME='RAM',
+  2  WHERE ID=101;
+WHERE ID=101
+*
+ERROR at line 2:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> UPDATE DOCTOR SET DNAME='RAM'
+  2  WHERE DID=101;
+
+1 row updated.
+
+SQL> SELECT * FROM DOCTOR;
+
+       DID DNAME                                 AGE SPECIALIZATION                                                                                                                                     
+---------- ------------------------------ ---------- ------------------------------                                                                                                                     
+       101 RAM                                    27 DENTAL                                                                                                                                             
+       102 B                                      30 EYE                                                                                                                                                
+       103 C                                      32 GUESTIC                                                                                                                                            
+
+SQL> UPADATE DOCTOR SET DNAME IN (HARI,SAMM)
+SP2-0734: unknown command beginning "UPADATE DO..." - rest of line ignored.
+SQL> SPOOL OFF

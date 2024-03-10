@@ -1,0 +1,268 @@
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE EMPNO=(SELECT MGR FROM EMP
+  4  WHERE ENAME='SMITH');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+SQL> SET LINESIZE 200 PAGESIZE 200
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE SAL IN (SELECT SAL
+  4  FROM EMP
+  5  WHERE ENAME='SCOTT') AND JOB!=(SELECT JOB
+  6  FROM EMP
+  7  WHERE ENAME='JONES');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+
+SQL> SELECT DNAME,LOC
+  2  FROM DEP
+  3  WHERE DEPTNO IN
+  4  (SELECT DEPTNO FROM EMP
+  5  WHERE SAL=(SELECT MAX(SAL) FROM EMP
+  6  WHERE SAL IN (SELECT MAX(SAL) FROM EMP
+  7  
+SQL> SELECT DNAME,LOC
+  2  FROM DEP
+  3  WHERE DEPTNO IN
+  4  (SELECT DEPTNO FROM EMP
+  5  WHERE SAL=(SELECT MAX(SAL) FROM EMP
+  6  WHERE SAL IN (SELECT MAX(SAL) FROM EMP
+  7  WHERE SAL <(SELECT MAX(SAL) FROM EMP
+  8  WHERE SAL <(SELECT MAX(SAL) FROM EMP
+  9  WHERE SAL <(SELECT MAX(SAL) FROM EMP
+ 10  WHERE SAL <(SELECT MAX(SAL) FROM EMP))))));
+WHERE SAL <(SELECT MAX(SAL) FROM EMP))))))
+                                         *
+ERROR at line 10:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT DNAME,LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO IN
+  4  (SELECT DEPTNO FROM EMP
+  5  WHERE SAL=(SELECT MAX(SAL) FROM EMP
+  6  WHERE SAL IN (SELECT MAX(SAL) FROM EMP
+  7  WHERE SAL <(SELECT MAX(SAL) FROM EMP
+  8  WHERE SAL <(SELECT MAX(SAL) FROM EMP
+  9  WHERE SAL <(SELECT MAX(SAL) FROM EMP
+ 10  WHERE SAL <(SELECT MAX(SAL) FROM EMP))))));
+WHERE SAL <(SELECT MAX(SAL) FROM EMP))))))
+                                         *
+ERROR at line 10:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT DMANE, LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO FROM EMP
+  4  WHERE SAL IN (SELECT MAX(SAL) FROM EMP
+  5  WHERE SAL IN (SELECT MAX(SAL) FROM EMP
+  6  WHERE SAL <(SELECT MAX(SAL) FROM EMP
+  7  WHERE SAL <(SELECT MAX(SAL) FROM EMP
+  8  WHERE SAL <(SELECT MAX(SAL) FROM EMP
+  9  WHERE SAL <(SELECT MAX(SAL) FROM EMP))))));
+WHERE SAL <(SELECT MAX(SAL) FROM EMP))))))
+                                         *
+ERROR at line 9:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT DNAME,LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO FROM EMP
+  4  WHERE SAL=(SELECT MAX(SAL) FROM EMP
+  5  WHERE SAL IN (SELECT MAX(SAL) FROM EMP
+  6   WHERE SAL <(SELECT MAX(SAL) FROM EMP
+  7   WHERE SAL <(SELECT MAX(SAL) FROM EMP
+  8   WHERE SAL <(SELECT MAX(SAL) FROM EMP
+  9   WHERE SAL <(SELECT MAX(SAL) FROM EMP)))))));
+
+DNAME          LOC                                                                                                                                                                                      
+-------------- -------------                                                                                                                                                                            
+ACCOUNTING     NEW YORK                                                                                                                                                                                 
+
+SQL> SELECT SAL*12
+  2  FROM EMP
+  3  WHERE SAL IN (SELECT SAL FROM EMP
+  4  
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT SAL*12
+  2  FROM EMP
+  3  WHERE SAL>(SELECT SAL
+  4  FROM EMP
+  5  WHERE JOB='SALESMAN') AND DEPTNO IN (SELECT DEPTNO FROM DEPT
+  6  WHERE DNAME='SALES');
+WHERE SAL>(SELECT SAL
+           *
+ERROR at line 3:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> SELECT *
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  FROM EMP WHERE COMM IN (SELECT MAX(COMM)
+  5  FROM EMP));
+
+    DEPTNO DNAME          LOC                                                                                                                                                                           
+---------- -------------- -------------                                                                                                                                                                 
+        30 SALES          CHICAGO                                                                                                                                                                       
+
+SQL> SELECT ENAME,SAL
+  2  
+SQL> 
+SQL> 
+SQL> SELECT ENAME,SAL,HIREDATE
+  2  FROM EMP
+  3  WHERE SAL IN
+  4  (SELECT MIN(SAL)
+  5  FROM EMP
+  6  WHERE DEPTNO IN (SELECT DEPTNO
+  7  FROM DEPT WHERE DNAME='ACCOUNTING'));
+
+ENAME             SAL HIREDATE                                                                                                                                                                          
+---------- ---------- ---------                                                                                                                                                                         
+MILLER           1300 23-JAN-82                                                                                                                                                                         
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE EMPNO IN (SELECT MGR FROM EMP
+  4  WHERE EMPNO IN (SELECT MGR FROM EMP
+  5  WHERE ENAME='ENAME'));
+
+no rows selected
+
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4  FROM EMP
+  5  WHERE EMPNO IN (SELECT MGR FROM EMP
+  6  WHERE EMPNO IN (SELECT MGR FROM EMP
+  7  WHERE JOB='SALESMAN'));
+WHERE JOB='SALESMAN'))
+                     *
+ERROR at line 7:
+ORA-00907: missing right parenthesis 
+
+
+SQL>  SELECT DNAME
+  2   FROM DEPT
+  3   WHERE DEPTNO IN (SELECT DEPTNO
+  4   FROM EMP
+  5   WHERE EMPNO IN (SELECT MGR FROM EMP
+  6   WHERE EMPNO IN (SELECT MGR FROM EMP
+  7   WHERE JOB='SALESMAN')));
+
+DNAME                                                                                                                                                                                                   
+--------------                                                                                                                                                                                          
+ACCOUNTING                                                                                                                                                                                              
+
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE  DEPTNO IN (SELECT DEPTNO
+  4  FROM EMP WHERE  SAL>2000 ) AND LOC='NEW YORK');
+FROM EMP WHERE  SAL>2000 ) AND LOC='NEW YORK')
+                                             *
+ERROR at line 4:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE  DEPTNO IN (SELECT DEPTNO
+  4  FROM EMP WHERE SAL>2000 AND LOC='NEW YORK');
+
+DNAME                                                                                                                                                                                                   
+--------------                                                                                                                                                                                          
+ACCOUNTING                                                                                                                                                                                              
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE MGR  IS NULL AND ISNULL AND DEPTNO IN
+  4  (SELECT DEPTNO FROM DEPT
+  5  WHERE LOC = 'CHICAGO' AND
+  6  JOB = (SELECT JOB FROM EMP
+  7  WHERE ENAME ='MARTIN'));
+WHERE MGR  IS NULL AND ISNULL AND DEPTNO IN
+                              *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL>  SELECT *
+  2   FROM EMP
+  3   WHERE MGR  IS NULL AND ISNULL AND DEPTNO IN
+  4   (SELECT DEPTNO FROM DEPT(SELECT DEPTNO FROM DEPT
+  5  WHERE LOC = 'CHICAGO' ) AND JOB = (SELECT JOB FROM EMP
+  6  WHERE ENAME ='MARTIN'));
+ WHERE MGR  IS NULL AND ISNULL AND DEPTNO IN
+                               *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE MGR  IS NULL AND ISNULL AND DEPTNO IN
+  4  (SELECT DEPTNO FROM DEPT(SELECT DEPTNO FROM DEPT
+  5  WHERE LOC = 'CHICAGO' ) AND JOB IN (SELECT JOB FROM EMP
+  6  WHERE ENAME ='MARTIN'));
+WHERE MGR  IS NULL AND ISNULL AND DEPTNO IN
+                              *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE MGR  IS NULL AND COMM ISNULL AND DEPTNO IN
+  4  (SELECT DEPTNO FROM DEPT
+  5  WHERE LOC = 'CHICAGO' AND
+  6  JOB = (SELECT JOB FROM EMP
+  7  WHERE ENAME ='MARTIN'));
+WHERE MGR  IS NULL AND COMM ISNULL AND DEPTNO IN
+                            *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL>  SELECT *
+  2   FROM EMP
+  3   WHERE MGR  IS NULL AND COMM IS NULL AND
+  4  DEPT NO IN (SELECT DEPTNO FROM DEPT
+  5  WHERE LOC='CHICAGO' AND JOB = (SELECT JOB FROM EMP
+  6  WHERE ENAME = 'SMITH')));
+DEPT NO IN (SELECT DEPTNO FROM DEPT
+     *
+ERROR at line 4:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE MGR  IS NULL AND COMM ISNULL AND DEPTNO IN
+  4  (SELECT DEPTNO FROM DEPT
+  5  WHERE LOC = 'CHICAGO' AND
+  6  JOB = (SELECT JOB FROM EMP
+  7  WHERE ENAME ='MARTIN')));
+WHERE MGR  IS NULL AND COMM ISNULL AND DEPTNO IN
+                            *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL> SPOOL OFF

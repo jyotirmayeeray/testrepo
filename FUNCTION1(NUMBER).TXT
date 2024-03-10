@@ -1,0 +1,128 @@
+SQL> SELECT MOD(33,6), FROM DUAL;
+SELECT MOD(33,6), FROM DUAL
+                  *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT MOD(33,6)FROM DUAL;
+
+ MOD(33,6)                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> SELECT MOD(55,4)
+  2  FROM DUAL
+  3  ;
+
+ MOD(55,4)                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> SELECT ABS(-12)
+  2  FROM DUAL;
+
+  ABS(-12)                                                                      
+----------                                                                      
+        12                                                                      
+
+SQL> SELECT ABS(12)
+  2  FROM DUAL;
+
+   ABS(12)                                                                      
+----------                                                                      
+        12                                                                      
+
+SQL> SELECT ABS(-12.4)
+  2  FROM DUAL;
+
+ABS(-12.4)                                                                      
+----------                                                                      
+      12.4                                                                      
+
+SQL> SELECT SQRT(169)
+  2  FROM DUAL;
+
+ SQRT(169)                                                                      
+----------                                                                      
+        13                                                                      
+
+SQL> SELECT POWER(7,0)
+  2  FROM DUAL;
+
+POWER(7,0)                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> SELECT POWER (13,13)
+  2  FROM DUAL;
+
+POWER(13,13)                                                                    
+------------                                                                    
+  3.0288E+14                                                                    
+
+SQL> SELECT POWER(9,9)
+  2  FROM DUAL;
+
+POWER(9,9)                                                                      
+----------                                                                      
+ 387420489                                                                      
+
+SQL> SELECT FLOOR(13.3)
+  2  FROM DUAL
+  3  ;
+
+FLOOR(13.3)                                                                     
+-----------                                                                     
+         13                                                                     
+
+SQL> SELECT FLOOR(17.4)
+  2  FROM DUAL;
+
+FLOOR(17.4)                                                                     
+-----------                                                                     
+         17                                                                     
+
+SQL> SELECT FLOOR(20.8)
+  2  FROM DUAL;
+
+FLOOR(20.8)                                                                     
+-----------                                                                     
+         20                                                                     
+
+SQL> SELECT CEIL(14.5)
+  2  FROM DUAL;
+
+CEIL(14.5)                                                                      
+----------                                                                      
+        15                                                                      
+
+SQL> SELECT CEIL(15.9)
+  2  FROM DUAL;
+
+CEIL(15.9)                                                                      
+----------                                                                      
+        16                                                                      
+
+SQL> SELECT CEIL(15.2)
+  2  FROM DUAL;
+
+CEIL(15.2)                                                                      
+----------                                                                      
+        16                                                                      
+
+SQL> SELECT ROUND(12.3)
+  2  FROM DUAL;
+
+ROUND(12.3)                                                                     
+-----------                                                                     
+         12                                                                     
+
+SQL> SELECT ROUND(12.9)
+  2  FROM DUAL;
+
+ROUND(12.9)                                                                     
+-----------                                                                     
+         13                                                                     
+
+SQL> SPOOL OFF

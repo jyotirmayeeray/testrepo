@@ -1,0 +1,312 @@
+SQL> SELECT LENGTH ('HELLO')
+  2  FROM DUAL;
+
+LENGTH('HELLO')                                                                 
+---------------                                                                 
+              5                                                                 
+
+SQL> SELECT LENGTH('WELCOM TO JSPIDERS')
+  2  FROM DUAL;
+
+LENGTH('WELCOMTOJSPIDERS')                                                      
+--------------------------                                                      
+                        18                                                      
+
+SQL> SELECT UPPER('WELCOME')
+  2  FROM DUAL;
+
+UPPER('                                                                         
+-------                                                                         
+WELCOME                                                                         
+
+SQL> SELECT UPPER('WE ARE DEVLOPER')
+  2  FROM DUAL;
+
+UPPER('WEAREDEV                                                                 
+---------------                                                                 
+WE ARE DEVLOPER                                                                 
+
+SQL> SELECT UPPER('sql is easy')
+  2  from dual;
+
+UPPER('SQLI                                                                     
+-----------                                                                     
+SQL IS EASY                                                                     
+
+SQL> SELECT LOWER (PROGRAMER)
+  2  FROM DUAL;
+SELECT LOWER (PROGRAMER)
+              *
+ERROR at line 1:
+ORA-00904: "PROGRAMER": invalid identifier 
+
+
+SQL> SELECT LOWER('PROGRAMER')
+  2  FROM DUAL;
+
+LOWER('PR                                                                       
+---------                                                                       
+programer                                                                       
+
+SQL> SELECT LOWER('WE ARE DEVLOPER')
+  2  FROM DUAL;
+
+LOWER('WEAREDEV                                                                 
+---------------                                                                 
+we are devloper                                                                 
+
+SQL> SELECT LOWER ('practicr') FROM DUAL;
+
+LOWER('P                                                                        
+--------                                                                        
+practicr                                                                        
+
+SQL> SELECT INITCAP('CUSTOMER')
+  2  FROM DUAL;
+
+INITCAP(                                                                        
+--------                                                                        
+Customer                                                                        
+
+SQL> SELECT INITCAP('WE ARE DEVLOPER')
+  2  FROM DUAL;
+
+INITCAP('WEARED                                                                 
+---------------                                                                 
+We Are Devloper                                                                 
+
+SQL> SELECT REVERSE('Hi Good mornig')
+  2  from dual;
+
+REVERSE('HIGOO                                                                  
+--------------                                                                  
+ginrom dooG iH                                                                  
+
+SQL> select REPLACE('JAVA','JA','MA')
+  2  FROM DUAL;
+
+REPL                                                                            
+----                                                                            
+MAVA                                                                            
+
+SQL> SELECT REPLACE('JAVA','JA')
+  2  FROM DUAL;
+
+RE                                                                              
+--                                                                              
+VA                                                                              
+
+SQL> SELECT REPLACE('JAVA','JAVA','SQL')
+  2   FROM DUAL;
+
+REP                                                                             
+---                                                                             
+SQL                                                                             
+
+SQL> SELECT REPLACE('ENGINEER','ER')
+  2   FROM DUAL;
+
+REPLAC                                                                          
+------                                                                          
+ENGINE                                                                          
+
+SQL> SELECT SUBSTR('WELCOME',4)
+  2   FROM DUAL;
+
+SUBS                                                                            
+----                                                                            
+COME                                                                            
+
+SQL> SELECT SBSTR('WELCOME',1,6)
+  2   FROM DUAL;
+SELECT SBSTR('WELCOME',1,6)
+       *
+ERROR at line 1:
+ORA-00904: "SBSTR": invalid identifier 
+
+
+SQL> SELECT SUBSTR('WELCOME',1,6)
+  2   FROM DUAL;
+
+SUBSTR                                                                          
+------                                                                          
+WELCOM                                                                          
+
+SQL> SELECT SUBSTR('ENGINEERING',4,4)
+  2   FROM DUAL;
+
+SUBS                                                                            
+----                                                                            
+INEE                                                                            
+
+SQL> SELECT SUBSTR('GOOD MORNIG',1,5)
+  2   FROM DUAL;
+
+SUBST                                                                           
+-----                                                                           
+GOOD                                                                            
+
+SQL> SELECT MOD(SAL,6)=0;
+SELECT MOD(SAL,6)=0
+                 *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT MOD(SAL,6)=0
+  2   FROM DUAL;
+SELECT MOD(SAL,6)=0
+                 *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT MOD(SAL,6)
+  2  =0 FROM EMP;
+=0 FROM EMP
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT* FROM EMP
+  2  WHERE MOD(SAL,6)=0;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                 
+        30                                                                      
+                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                 
+        20                                                                      
+                                                                                
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0      
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+SQL> SELECT * FROM EMP
+  2  WHERE LENGTH(JOB)=5;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                 
+        20                                                                      
+                                                                                
+      7900 JAMES      CLERK           7698 03-DEC-81        950                 
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                 
+        10                                                                      
+                                                                                
+
+SQL> SELECT SUBSTR(ENAME,1,3)
+  2  FROM EMP;
+
+SUB                                                                             
+---                                                                             
+SMI                                                                             
+ALL                                                                             
+WAR                                                                             
+JON                                                                             
+MAR                                                                             
+BLA                                                                             
+CLA                                                                             
+SCO                                                                             
+KIN                                                                             
+TUR                                                                             
+ADA                                                                             
+
+SUB                                                                             
+---                                                                             
+JAM                                                                             
+FOR                                                                             
+MIL                                                                             
+
+14 rows selected.
+
+SQL> SELECT SUBSTR(LOWER(ENAME,1,3))
+  2  FROM EMP;
+SELECT SUBSTR(LOWER(ENAME,1,3))
+              *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT LOWER(SUBSTR(ENAME,1,3))
+  2  FROM EMP;
+
+LOW                                                                             
+---                                                                             
+smi                                                                             
+all                                                                             
+war                                                                             
+jon                                                                             
+mar                                                                             
+bla                                                                             
+cla                                                                             
+sco                                                                             
+kin                                                                             
+tur                                                                             
+ada                                                                             
+
+LOW                                                                             
+---                                                                             
+jam                                                                             
+for                                                                             
+mil                                                                             
+
+14 rows selected.
+
+SQL> SELECT REPLACE('DEVLOPEMENT','MENT','ER')
+  2  FROM DUAL;
+
+REPLACE('                                                                       
+---------                                                                       
+DEVLOPEER                                                                       
+
+SQL> SELECT INITCAP(ENAME)
+  2  FROM EMP;
+
+INITCAP(EN                                                                      
+----------                                                                      
+Smith                                                                           
+Allen                                                                           
+Ward                                                                            
+Jones                                                                           
+Martin                                                                          
+Blake                                                                           
+Clark                                                                           
+Scott                                                                           
+King                                                                            
+Turner                                                                          
+Adams                                                                           
+
+INITCAP(EN                                                                      
+----------                                                                      
+James                                                                           
+Ford                                                                            
+Miller                                                                          
+
+14 rows selected.
+
+SQL> SPOOL OFF

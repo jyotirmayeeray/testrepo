@@ -1,0 +1,220 @@
+SQL> set pagesize 200 linesize 200
+SQL> select *
+  2  from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+
+14 rows selected.
+
+SQL> select empno
+  2  
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> select empno-5
+  2  from emp;
+
+   EMPNO-5                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      7364                                                                                                                                                                                              
+      7494                                                                                                                                                                                              
+      7516                                                                                                                                                                                              
+      7561                                                                                                                                                                                              
+      7649                                                                                                                                                                                              
+      7693                                                                                                                                                                                              
+      7777                                                                                                                                                                                              
+      7783                                                                                                                                                                                              
+      7834                                                                                                                                                                                              
+      7839                                                                                                                                                                                              
+      7871                                                                                                                                                                                              
+      7895                                                                                                                                                                                              
+      7897                                                                                                                                                                                              
+      7929                                                                                                                                                                                              
+
+14 rows selected.
+
+SQL> select ename-a
+  2  from emp;
+select ename-a
+             *
+ERROR at line 1:
+ORA-00904: "A": invalid identifier 
+
+
+SQL> select ename-b
+  2  from emp;
+select ename-b
+             *
+ERROR at line 1:
+ORA-00904: "B": invalid identifier 
+
+
+SQL> select sal/2, comm*12
+  2  from emp;
+
+     SAL/2    COMM*12                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+       400                                                                                                                                                                                              
+       800       3600                                                                                                                                                                                   
+       625       6000                                                                                                                                                                                   
+    1487.5                                                                                                                                                                                              
+       625      16800                                                                                                                                                                                   
+      1425                                                                                                                                                                                              
+      1225                                                                                                                                                                                              
+      1500                                                                                                                                                                                              
+      2500                                                                                                                                                                                              
+       750          0                                                                                                                                                                                   
+       550                                                                                                                                                                                              
+       475                                                                                                                                                                                              
+      1500                                                                                                                                                                                              
+       650                                                                                                                                                                                              
+
+14 rows selected.
+
+SQL> select sal*4.5
+  2  from emp;
+
+   SAL*4.5                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      3600                                                                                                                                                                                              
+      7200                                                                                                                                                                                              
+      5625                                                                                                                                                                                              
+   13387.5                                                                                                                                                                                              
+      5625                                                                                                                                                                                              
+     12825                                                                                                                                                                                              
+     11025                                                                                                                                                                                              
+     13500                                                                                                                                                                                              
+     22500                                                                                                                                                                                              
+      6750                                                                                                                                                                                              
+      4950                                                                                                                                                                                              
+      4275                                                                                                                                                                                              
+     13500                                                                                                                                                                                              
+      5850                                                                                                                                                                                              
+
+14 rows selected.
+
+SQL> select *
+  2  from emp
+  3  where sal=3000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+
+SQL> select ename,job
+  2  from emp
+  3  where sal>=1000;
+
+ENAME      JOB                                                                                                                                                                                          
+---------- ---------                                                                                                                                                                                    
+ALLEN      SALESMAN                                                                                                                                                                                     
+WARD       SALESMAN                                                                                                                                                                                     
+JONES      MANAGER                                                                                                                                                                                      
+MARTIN     SALESMAN                                                                                                                                                                                     
+BLAKE      MANAGER                                                                                                                                                                                      
+CLARK      MANAGER                                                                                                                                                                                      
+SCOTT      ANALYST                                                                                                                                                                                      
+KING       PRESIDENT                                                                                                                                                                                    
+TURNER     SALESMAN                                                                                                                                                                                     
+ADAMS      CLERK                                                                                                                                                                                        
+FORD       ANALYST                                                                                                                                                                                      
+MILLER     CLERK                                                                                                                                                                                        
+
+12 rows selected.
+
+SQL> select ename, job ,sal
+  2  from emp
+  3  where comm<>2000;
+
+ENAME      JOB              SAL                                                                                                                                                                         
+---------- --------- ----------                                                                                                                                                                         
+ALLEN      SALESMAN        1600                                                                                                                                                                         
+WARD       SALESMAN        1250                                                                                                                                                                         
+MARTIN     SALESMAN        1250                                                                                                                                                                         
+TURNER     SALESMAN        1500                                                                                                                                                                         
+
+SQL> select *
+  2  from emp
+  3  where sal<=500;
+
+no rows selected
+
+SQL> select sal*12
+  2  from emp
+  3  where job<>salesman;
+where job<>salesman
+           *
+ERROR at line 3:
+ORA-00904: "SALESMAN": invalid identifier 
+
+
+SQL> select sal*12
+  2  from emp
+  3  where job<>'SALESMAN';
+
+    SAL*12                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      9600                                                                                                                                                                                              
+     35700                                                                                                                                                                                              
+     34200                                                                                                                                                                                              
+     29400                                                                                                                                                                                              
+     36000                                                                                                                                                                                              
+     60000                                                                                                                                                                                              
+     13200                                                                                                                                                                                              
+     11400                                                                                                                                                                                              
+     36000                                                                                                                                                                                              
+     15600                                                                                                                                                                                              
+
+10 rows selected.
+
+SQL> select ename,sal/2,deptno
+  2  from emp
+  3  where comm>2000;
+
+no rows selected
+
+SQL> select
+  2  sal*6
+  3  from emp
+  4  where sal<1500;
+
+     SAL*6                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      4800                                                                                                                                                                                              
+      7500                                                                                                                                                                                              
+      7500                                                                                                                                                                                              
+      6600                                                                                                                                                                                              
+      5700                                                                                                                                                                                              
+      7800                                                                                                                                                                                              
+
+6 rows selected.
+
+SQL> select
+  2  
+SQL> select *
+  2  from emp
+  3  where sal=4000;
+
+no rows selected
+
+SQL> spool off

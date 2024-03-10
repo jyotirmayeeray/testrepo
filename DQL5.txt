@@ -1,0 +1,208 @@
+SQL> set pagesize 200 linesize 200
+SQL> select *
+  2  from emp
+  3  where ename in ('SMITH','ALLEN','BLAKE');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+
+SQL> select sal*12
+  2  from emp
+  3  where deptno in (20,30);
+
+    SAL*12                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      9600                                                                                                                                                                                              
+     19200                                                                                                                                                                                              
+     15000                                                                                                                                                                                              
+     35700                                                                                                                                                                                              
+     15000                                                                                                                                                                                              
+     34200                                                                                                                                                                                              
+     36000                                                                                                                                                                                              
+     18000                                                                                                                                                                                              
+     13200                                                                                                                                                                                              
+     11400                                                                                                                                                                                              
+     36000                                                                                                                                                                                              
+
+11 rows selected.
+
+SQL> select * from dept;
+
+    DEPTNO DNAME          LOC                                                                                                                                                                           
+---------- -------------- -------------                                                                                                                                                                 
+        10 ACCOUNTING     NEW YORK                                                                                                                                                                      
+        20 RESEARCH       DALLAS                                                                                                                                                                        
+        30 SALES          CHICAGO                                                                                                                                                                       
+        40 OPERATIONS     BOSTON                                                                                                                                                                        
+
+SQL> select *
+  2  from dept
+  3  where dname in ('ACCOUNTING','RESEARCH');
+
+    DEPTNO DNAME          LOC                                                                                                                                                                           
+---------- -------------- -------------                                                                                                                                                                 
+        10 ACCOUNTING     NEW YORK                                                                                                                                                                      
+        20 RESEARCH       DALLAS                                                                                                                                                                        
+
+SQL> select empno as id
+  2  from emp;
+
+        ID                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      7369                                                                                                                                                                                              
+      7499                                                                                                                                                                                              
+      7521                                                                                                                                                                                              
+      7566                                                                                                                                                                                              
+      7654                                                                                                                                                                                              
+      7698                                                                                                                                                                                              
+      7782                                                                                                                                                                                              
+      7788                                                                                                                                                                                              
+      7839                                                                                                                                                                                              
+      7844                                                                                                                                                                                              
+      7876                                                                                                                                                                                              
+      7900                                                                                                                                                                                              
+      7902                                                                                                                                                                                              
+      7934                                                                                                                                                                                              
+
+14 rows selected.
+
+SQL> select ename emp_name, job desi, hiredate jd
+  2  from emp;
+
+EMP_NAME   DESI      JD                                                                                                                                                                                 
+---------- --------- ---------                                                                                                                                                                          
+SMITH      CLERK     17-DEC-80                                                                                                                                                                          
+ALLEN      SALESMAN  20-FEB-81                                                                                                                                                                          
+WARD       SALESMAN  22-FEB-81                                                                                                                                                                          
+JONES      MANAGER   02-APR-81                                                                                                                                                                          
+MARTIN     SALESMAN  28-SEP-81                                                                                                                                                                          
+BLAKE      MANAGER   01-MAY-81                                                                                                                                                                          
+CLARK      MANAGER   09-JUN-81                                                                                                                                                                          
+SCOTT      ANALYST   19-APR-87                                                                                                                                                                          
+KING       PRESIDENT 17-NOV-81                                                                                                                                                                          
+TURNER     SALESMAN  08-SEP-81                                                                                                                                                                          
+ADAMS      CLERK     23-MAY-87                                                                                                                                                                          
+JAMES      CLERK     03-DEC-81                                                                                                                                                                          
+FORD       ANALYST   03-DEC-81                                                                                                                                                                          
+MILLER     CLERK     23-JAN-82                                                                                                                                                                          
+
+14 rows selected.
+
+SQL> select jyoti
+  2  from emp;
+select jyoti
+       *
+ERROR at line 1:
+ORA-00904: "JYOTI": invalid identifier 
+
+
+SQL> select JYOTI
+  2  from emp;
+select JYOTI
+       *
+ERROR at line 1:
+ORA-00904: "JYOTI": invalid identifier 
+
+
+SQL> select 'JYOTI'
+  2  from emp;
+
+'JYOT                                                                                                                                                                                                   
+-----                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+JYOTI                                                                                                                                                                                                   
+
+14 rows selected.
+
+SQL> select 620
+  2  from emp;
+
+       620                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+       620                                                                                                                                                                                              
+
+14 rows selected.
+
+SQL> select 120
+  2  from dual;
+
+       120                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+       120                                                                                                                                                                                              
+
+SQL> select 44||12
+  2  from emp;
+
+44||                                                                                                                                                                                                    
+----                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+4412                                                                                                                                                                                                    
+
+14 rows selected.
+
+SQL> select 44||SQL
+  2  from emp;
+select 44||SQL
+           *
+ERROR at line 1:
+ORA-00904: "SQL": invalid identifier 
+
+
+SQL> select 44||'SQL'
+  2  from dept;
+
+44||'                                                                                                                                                                                                   
+-----                                                                                                                                                                                                   
+44SQL                                                                                                                                                                                                   
+44SQL                                                                                                                                                                                                   
+44SQL                                                                                                                                                                                                   
+44SQL                                                                                                                                                                                                   
+
+SQL> select 'SQL'||'PLUS'
+  2  from dual;
+
+'SQL'||                                                                                                                                                                                                 
+-------                                                                                                                                                                                                 
+SQLPLUS                                                                                                                                                                                                 
+
+SQL> spool off

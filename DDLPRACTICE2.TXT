@@ -1,0 +1,322 @@
+SQL> SELECT* FROM AUTHOR;
+
+no rows selected
+
+SQL> SELECT* FROM COURSE;
+
+no rows selected
+
+SQL> SELECT* FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+COURSE                         TABLE                                            
+STUDENT                        TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+CUSTOMER                       TABLE                                            
+PRODUCT                        TABLE                                            
+DOCTOR                         TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+PATAIENT                       TABLE                                            
+
+12 rows selected.
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ TNAME                                              VARCHAR2(20)
+ DURATION                                           VARCHAR2(20)
+
+SQL> ALTER TABLE COURSE
+  2  ADD DURATION NUMBER(6);
+ADD DURATION NUMBER(6)
+    *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+SQL> ALTER TABLE COURSE
+  2  RENAME COLUMN FEES TO PRICE;
+RENAME COLUMN FEES TO PRICE
+              *
+ERROR at line 2:
+ORA-00904: "FEES": invalid identifier 
+
+
+SQL> ALTER TABLE COURSE
+  2  ADD FEES NUMBER(5);
+
+Table altered.
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ TNAME                                              VARCHAR2(20)
+ DURATION                                           VARCHAR2(20)
+ FEES                                               NUMBER(5)
+
+SQL> ALTER TABLE COURSE
+  2  RENAME COLUMN FEES TO PRICE;
+
+Table altered.
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ TNAME                                              VARCHAR2(20)
+ DURATION                                           VARCHAR2(20)
+ PRICE                                              NUMBER(5)
+
+SQL>  ALTER TABLE COURSE
+  2  DROP COLUMN PRICE;
+
+Table altered.
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ TNAME                                              VARCHAR2(20)
+ DURATION                                           VARCHAR2(20)
+
+SQL>  ALTER TABLE COURSE
+  2  MODIFY DURATION VARCHAR(20);
+
+Table altered.
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ TNAME                                              VARCHAR2(20)
+ DURATION                                           VARCHAR2(20)
+
+SQL> SHOW RECYCLEBIN;
+SQL> 
+SQL> DROP TABLE COURSE;
+DROP TABLE COURSE
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys 
+
+
+SQL> DROP TABLE COURSE;
+DROP TABLE COURSE
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys 
+
+
+SQL> DROP TABLE STUDENT;
+
+Table dropped.
+
+SQL> SHOW RECYCLEBIN;
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME          
+---------------- ------------------------------ ------------ -------------------
+STUDENT          BIN$D+gnG8PoToGA4TgIfL/ARg==$0 TABLE        2024-02-27:23:56:49
+SQL> FLASHBACK TABLE STUDENT
+  2  TO BEFORE DROP;
+
+Flashback complete.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+STUDENT                        TABLE                                            
+COURSE                         TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+CUSTOMER                       TABLE                                            
+PRODUCT                        TABLE                                            
+DOCTOR                         TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+PATAIENT                       TABLE                                            
+
+12 rows selected.
+
+SQL> PURGE TABLE DOCTOR;
+PURGE TABLE DOCTOR
+*
+ERROR at line 1:
+ORA-38307: object not in RECYCLE BIN 
+
+
+SQL> PURGE TABLE DOCTOR;
+PURGE TABLE DOCTOR
+*
+ERROR at line 1:
+ORA-38307: object not in RECYCLE BIN 
+
+
+SQL> PURGE RECYCLEBIN;
+
+Recyclebin purged.
+
+SQL> SHOW RECYCLEBIN;
+SQL> SELECT* FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+STUDENT                        TABLE                                            
+COURSE                         TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+CUSTOMER                       TABLE                                            
+PRODUCT                        TABLE                                            
+DOCTOR                         TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+PATAIENT                       TABLE                                            
+
+12 rows selected.
+
+SQL> SELECT
+  2  * FROM DOCTOR;
+
+       DID DNAME                                 AGE                            
+---------- ------------------------------ ----------                            
+SPECIALIZATION                                                                  
+------------------------------                                                  
+       101 A                                      27                            
+DENTAL                                                                          
+                                                                                
+       102 B                                      30                            
+EYE                                                                             
+                                                                                
+       103 C                                      32                            
+GUESTIC                                                                         
+                                                                                
+
+SQL> TRUNCATE TABLE DOCTOR;
+TRUNCATE TABLE DOCTOR
+               *
+ERROR at line 1:
+ORA-02266: unique/primary keys in table referenced by enabled foreign keys 
+
+
+SQL> TRUNCATE TABLE PATAIENT;
+
+Table truncated.
+
+SQL> SELECT* FROM PATAIENT;
+
+no rows selected
+
+SQL> TRUNCATE TABLE DOCTOR;
+TRUNCATE TABLE DOCTOR
+               *
+ERROR at line 1:
+ORA-02266: unique/primary keys in table referenced by enabled foreign keys 
+
+
+SQL> RENAME DOCTOR TO SAVIOUR;
+
+Table renamed.
+
+SQL> SELECT
+  2  * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+SAVIOUR                        TABLE                                            
+STUDENT                        TABLE                                            
+COURSE                         TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+CUSTOMER                       TABLE                                            
+PRODUCT                        TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+PATAIENT                       TABLE                                            
+
+12 rows selected.
+
+SQL> RENAME SAVIOUR TO DOCTOR;
+
+Table renamed.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+STUDENT                        TABLE                                            
+DOCTOR                         TABLE                                            
+COURSE                         TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+CUSTOMER                       TABLE                                            
+PRODUCT                        TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+PATAIENT                       TABLE                                            
+
+12 rows selected.
+
+SQL> ALTER TABLE PATAIENT
+  2  ADD PID NUMBER(6) PRIMARY KEY;
+ADD PID NUMBER(6) PRIMARY KEY
+    *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+SQL> ALTER TABLE PATAIENT
+  2  ADD PID NUMBER(6);
+ADD PID NUMBER(6)
+    *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+SQL> DESC PATAIENT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER(5)
+ PNAME                                              VARCHAR2(20)
+ AGE                                                NUMBER(3)
+ DISCOVER                                           NUMBER(6)
+ DID                                                NUMBER(5)
+
+SQL> SELECT * FROM PATAIENT;
+
+no rows selected
+
+SQL> SPOOL OFF
